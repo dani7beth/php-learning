@@ -37,9 +37,12 @@ class Post
         // return cache()->remember("posts.{$slug}", now()->addDay(1), fn() => file_get_contents($path));
 
         // of all the blog posts, find the one with a slug that matches the one that was requested
-        $posts = static::all();
-        return $posts->firstWhere('slug', $slug);
+        $post = static::all()->firstWhere('slug', $slug);
+        if (! $post){
+            throw new ModelNotFoundException();
+        }
 
+        return $post;
 
     }
 

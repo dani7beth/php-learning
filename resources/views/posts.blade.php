@@ -1,7 +1,19 @@
-<!DOCTYPE html>
-<title>My Blog</title>
-<link rel="stylesheet" href="/app.css">
-<body>
+<x-layout>
+    <x-slot name="content">
+        @foreach($posts as $post)
+            <article>
+                <h1> <a href="/posts/{{$post->slug;}}">{{$post->title;}}</a></h1>
+                    <div>
+                        {{$post->excerpt;}}
+                    </div>
+                <p>{{$post->date;}}</p>
+            </article>
+        @endforeach
+    </x-slot>
+</x-layout>
+{{-- @extends('layout')
+
+@section('content')
     @foreach($posts as $post)
         <article>
            <h1> <a href="/posts/{{$post->slug;}}">{{$post->title;}}</a></h1>
@@ -11,6 +23,21 @@
            <p>{{$post->date;}}</p>
         </article>
     @endforeach
+@endsection --}}
+{{-- <!DOCTYPE html>
+<title>My Blog</title>
+<link rel="stylesheet" href="/app.css">
+<body>
+
+    {{-- @foreach($posts as $post)
+        <article>
+           <h1> <a href="/posts/{{$post->slug;}}">{{$post->title;}}</a></h1>
+           <div>
+            {{$post->excerpt;}}
+           </div>
+           <p>{{$post->date;}}</p>
+        </article>
+    @endforeach --}}
     <!-- <article>
         <h1><a href="/posts/my-first-post">Blog Post #1</a></h1>
         <p>
@@ -41,4 +68,4 @@
             sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
     </article> -->
-</body>
+{{-- </body> --}}
