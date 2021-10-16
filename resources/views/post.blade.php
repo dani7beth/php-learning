@@ -5,6 +5,9 @@
                 <div>
                     {!! $post->body; !!}
                 </div>
+            <p>
+                Category: {{$post->category->name}}
+            </p>
         </article>
         <a href="/">go back</a>
     </x-slot>
